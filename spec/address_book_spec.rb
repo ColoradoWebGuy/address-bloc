@@ -37,4 +37,19 @@ RSpec.describe AddressBook do
    end
  end
 
+ describe "#remove_entry" do
+   it "removes a single entry" do
+     # initiate an object
+     book = AddressBook.new
+     # add an entry to remove
+     book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+     # capture the length of the array to determine if an entry was removed
+     previous_size = book.entries.size
+     # remove entry
+     book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+     # test if entry was removed using the previous array size
+     expect(book.entries.size).to eq(previous_size-1)
+   end
+ end
+
 end
