@@ -31,7 +31,7 @@ class AddressBook
        end
     end
 
-    # Search AddressBook for a specific entry by name
+    # Search AddressBook for a specific entry by name by doing the Binary Search
     def binary_search(name)
       lower = 0
       upper = entries.length - 1
@@ -50,5 +50,24 @@ class AddressBook
       end
 
      return nil
+    end
+
+    # Search AddressBook for a specific entry by name by doing the Iterative Search
+    def iterative_search(name)
+      # Starting from the first entry in AddressBook.entries, iterate over
+      # the entries until you find the match. When the match is found,
+      # return it. If no match is ever found, return nil.
+
+      index = 0 # start from the first entry
+      while index < entries.length
+        index_name = entries[index].name
+        if name == index_name
+          return entries[index]
+        else
+          index = index + 1 # move to the next entry in the array
+        end
+      end
+
+      return nil
     end
 end
