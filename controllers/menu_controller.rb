@@ -13,7 +13,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - Destroy all entries"
+    puts "6 - Exit"
     puts "Enter your selection: "
 
     selection = gets.to_i
@@ -36,6 +37,11 @@ class MenuController
        read_csv
        main_menu
      when 5
+       # destroy all entries
+       system "clear"
+       destroy_all_entries
+       main_menu
+     when 6
        puts "Good-bye!"
        # terminate the program using exit(0). 0 signals the program is exiting without an error.
        exit(0)
@@ -56,6 +62,23 @@ class MenuController
 
      system "clear"
      puts "End of entries"
+   end
+
+   def destroy_all_entries
+     # destroy them
+
+     # A while loop here to make sure that ALL entries are destroyed.
+     while @address_book.entries.length != 0
+       # for some reason .each won't iterate through all entries. Why is this?
+       @address_book.entries.each { |entry|
+         delete_entry(entry)
+       }
+     end
+     
+     # show that its all destroyed
+     puts "\nKaBooom! All entries have been destroyed.\n\n"
+     # back to main_menu
+     main_menu
    end
 
    def create_entry
