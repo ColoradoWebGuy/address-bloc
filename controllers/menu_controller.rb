@@ -133,11 +133,13 @@ class MenuController
       end
     end
 
+    # delete entry
     def delete_entry(entry)
      @address_book.entries.delete(entry)
      puts "#{entry.name} has been deleted"
     end
 
+    # edit entry
     def edit_entry(entry)
      print "Updated name: "
      name = gets.chomp
@@ -153,6 +155,7 @@ class MenuController
      puts entry
    end
 
+   # continue search with options on the entry
    def search_submenu(entry)
      puts "\nd - delete entry"
      puts "e - edit this entry"
